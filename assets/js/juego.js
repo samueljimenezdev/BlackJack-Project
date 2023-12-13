@@ -4,14 +4,14 @@
  * H = Hearts
  * S = Spades 
 */
-const createDeck = (typesOfCarts, specials) => {
+const createDeck = (typesOfCards, specials) => {
     let deck = []
     for(let i = 2; i<=10; i++){
-        for (let type of typesOfCarts){
+        for (let type of typesOfCards){
             deck.push( i + type);
         }
     }
-    for (let types of typesOfCarts){
+    for (let types of typesOfCards){
         for (let special of specials){
             deck.push( special + types)
         }
@@ -20,22 +20,23 @@ const createDeck = (typesOfCarts, specials) => {
     return deck
 };
 
-const getCart = (deck) => {
+const getCard = (deck) => {
     if(deck.length === 0){
         throw 'No hay cartas en el deck'
     }
     return deck.shift()
 };
 
+const valueOfCard = (card) => {
+    const value = card.substring(0,card.length -1);
+    return ( !isNaN(value) ) ? value * 1
+            :(value === 'A') ? 11 : 10;
+}
 
-const typesOfCarts = ['C','D','H', 'S'];
+const typesOfCards = ['C','D','H', 'S'];
 const specials = ['A', 'J', 'Q', 'K'];
-const deck = createDeck(typesOfCarts, specials);
 
 
-
-
-
-
-console.log(getCart(deck));
+const deck = createDeck(typesOfCards, specials);
+console.log(valueOfCard(getCard(deck)));
 console.log(deck)
