@@ -33,10 +33,31 @@ const valueOfCard = (card) => {
             :(value === 'A') ? 11 : 10;
 }
 
+
+
 const typesOfCards = ['C','D','H', 'S'];
 const specials = ['A', 'J', 'Q', 'K'];
-
-
 const deck = createDeck(typesOfCards, specials);
-console.log(valueOfCard(getCard(deck)));
-console.log(deck)
+let pointsPlayer = 0;
+let pointsComputer = 0;
+
+// Events 
+
+const buttonNewGame = document.querySelector('#buttonNewGame');
+const buttonGetCard = document.querySelector('#buttonGetCard');
+const buttonStop = document.querySelector('#buttonStop');
+const pointsPlayerScore = document.querySelectorAll('small')
+
+buttonNewGame.addEventListener('click', ()=>{
+
+})
+buttonGetCard.addEventListener('click', ()=>{
+    const card = getCard(deck);
+    pointsPlayer += valueOfCard(card);
+    pointsPlayerScore[0].innerText = pointsPlayer;
+    
+})
+buttonStop.addEventListener('click', ()=>{
+
+})
+
